@@ -15,7 +15,7 @@ if (mobileMenuButton && mobileMenu) {
 const experts = [
   {
     image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
-    name: 'Dr. Sarah Johnson',
+    name: 'Om SInnarkar',
     role: 'Sports Medicine Specialist',
     specialty: 'Rehabilitation & Recovery',
     rating: 4.9,
