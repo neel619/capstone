@@ -191,11 +191,11 @@
   <script>
     // Initialize Lucide icons
     lucide.createIcons();
-
+  
     // Diet Calculator Logic
-    document.getElementById('diet-calculator').addEventListener('submit', function(e) {
+    document.getElementById('diet-calculator').addEventListener('submit', function (e) {
       e.preventDefault();
-      
+  
       // Get form values
       const age = parseInt(document.getElementById('age').value);
       const gender = document.getElementById('gender').value;
@@ -203,21 +203,27 @@
       const height = parseInt(document.getElementById('height').value);
       const activity = parseFloat(document.getElementById('activity').value);
       const goal = document.getElementById('goal').value;
-
+  
+      // Validate inputs
+      if (isNaN(age) || isNaN(weight) || isNaN(height) || !gender || !activity || !goal) {
+        alert("Please fill out all fields correctly.");
+        return;
+      }
+  
       // Calculate BMR using Mifflin-St Jeor Equation
       let bmr;
       if (gender === 'male') {
-        bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+        bmr = 10 * weight + 6.25 * height - 5 * age + 5;
       } else {
-        bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+        bmr = 10 * weight + 6.25 * height - 5 * age - 161;
       }
-
+  
       // Calculate TDEE (Total Daily Energy Expenditure)
       let tdee = bmr * activity;
-
+  
       // Adjust calories based on goal
       let calories;
-      switch(goal) {
+      switch (goal) {
         case 'loss':
           calories = tdee - 500; // 500 calorie deficit for weight loss
           break;
@@ -227,30 +233,30 @@
         default:
           calories = tdee; // Maintain current weight
       }
-
+  
       // Calculate macronutrients
       const protein = weight * 2.2; // 2.2g per kg of body weight
       const fats = (calories * 0.25) / 9; // 25% of calories from fat
-      const carbs = (calories - (protein * 4) - (fats * 9)) / 4; // Remaining calories from carbs
-
+      const carbs = (calories - protein * 4 - fats * 9) / 4; // Remaining calories from carbs
+  
       // Update results
       document.getElementById('calories-result').textContent = Math.round(calories);
-      document.getElementById('protein-result').textContent = ${Math.round(protein)}g;
-      document.getElementById('carbs-result').textContent = ${Math.round(carbs)}g;
-      document.getElementById('fats-result').textContent = ${Math.round(fats)}g;
-
+      document.getElementById('protein-result').textContent = `${Math.round(protein)}g`;
+      document.getElementById('carbs-result').textContent = `${Math.round(carbs)}g`;
+      document.getElementById('fats-result').textContent = `${Math.round(fats)}g`;
+  
       // Generate meal plan
       const mealPlan = generateMealPlan(calories, protein, carbs, fats);
       const mealPlanElement = document.getElementById('meal-plan');
       mealPlanElement.innerHTML = mealPlan;
-
+  
       // Show results
       document.getElementById('diet-results').classList.remove('hidden');
-      
+  
       // Smooth scroll to results
       document.getElementById('diet-results').scrollIntoView({ behavior: 'smooth' });
     });
-
+  
     function generateMealPlan(calories, protein, carbs, fats) {
       const meals = [
         {
@@ -258,54 +264,77 @@
           calories: Math.round(calories * 0.25),
           protein: Math.round(protein * 0.25),
           carbs: Math.round(carbs * 0.25),
-          fats: Math.round(fats * 0.25)
+          fats: Math.round(fats * 0.25),
+          suggestions: [
+            'Scrambled eggs with spinach and whole-grain toast',
+            'Greek yogurt with berries and nuts',
+          ],
         },
         {
           name: 'Lunch (35%)',
           calories: Math.round(calories * 0.35),
           protein: Math.round(protein * 0.35),
           carbs: Math.round(carbs * 0.35),
-          fats: Math.round(fats * 0.35)
+          fats: Math.round(fats * 0.35),
+          suggestions: [
+            'Grilled chicken salad with quinoa and avocado',
+            'Lentil soup with whole-grain bread',
+          ],
         },
         {
           name: 'Dinner (30%)',
           calories: Math.round(calories * 0.30),
           protein: Math.round(protein * 0.30),
           carbs: Math.round(carbs * 0.30),
-          fats: Math.round(fats * 0.30)
+          fats: Math.round(fats * 0.30),
+          suggestions: [
+            'Baked salmon with roasted vegetables',
+            'Stir-fried tofu with brown rice and broccoli',
+          ],
         },
         {
           name: 'Snacks (10%)',
           calories: Math.round(calories * 0.10),
           protein: Math.round(protein * 0.10),
           carbs: Math.round(carbs * 0.10),
-          fats: Math.round(fats * 0.10)
-        }
+          fats: Math.round(fats * 0.10),
+          suggestions: [
+            'A handful of almonds or walnuts',
+            'Apple slices with peanut butter',
+          ],
+        },
       ];
-
-      return meals.map(meal => `
-        <div class="border-b border-gray-200 pb-4">
-          <h5 class="font-semibold text-gray-900">${meal.name}</h5>
-          <div class="grid grid-cols-4 gap-4 mt-2 text-sm">
-            <div>
-              <span class="text-gray-600">Calories:</span>
-              <span class="font-medium ml-1">${meal.calories}</span>
+  
+      return meals
+        .map(
+          (meal) => `
+          <div class="border-b border-gray-200 pb-4">
+            <h5 class="font-semibold text-gray-900">${meal.name}</h5>
+            <div class="grid grid-cols-4 gap-4 mt-2 text-sm">
+              <div>
+                <span class="text-gray-600">Calories:</span>
+                <span class="font-medium ml-1">${meal.calories}</span>
+              </div>
+              <div>
+                <span class="text-gray-600">Protein:</span>
+                <span class="font-medium ml-1">${meal.protein}g</span>
+              </div>
+              <div>
+                <span class="text-gray-600">Carbs:</span>
+                <span class="font-medium ml-1">${meal.carbs}g</span>
+              </div>
+              <div>
+                <span class="text-gray-600">Fats:</span>
+                <span class="font-medium ml-1">${meal.fats}g</span>
+              </div>
             </div>
-            <div>
-              <span class="text-gray-600">Protein:</span>
-              <span class="font-medium ml-1">${meal.protein}g</span>
-            </div>
-            <div>
-              <span class="text-gray-600">Carbs:</span>
-              <span class="font-medium ml-1">${meal.carbs}g</span>
-            </div>
-            <div>
-              <span class="text-gray-600">Fats:</span>
-              <span class="font-medium ml-1">${meal.fats}g</span>
+            <div class="mt-2 text-sm text-gray-600">
+              <strong>Suggestions:</strong> ${meal.suggestions.join(', ')}
             </div>
           </div>
-        </div>
-      `).join('');
+        `
+        )
+        .join('');
     }
   </script>
 </body>
