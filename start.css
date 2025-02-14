@@ -1,0 +1,241 @@
+/* General Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+    color: #666;
+}
+
+/* Header */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    font-weight: 500;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #007bff;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.button {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.button.primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.button.primary:hover {
+    background-color: #0056b3;
+}
+
+.button.secondary {
+    border: 1px solid #007bff;
+    color: #007bff;
+}
+
+.button.secondary:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #007bff, #00bfff);
+    color: #fff;
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero .button.primary {
+    background-color: #fff;
+    color: #007bff;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+}
+
+.hero .button.primary:hover {
+    background-color: #f0f0f0;
+}
+
+/* Steps Section */
+.steps {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.steps h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.steps .step {
+    display: inline-block;
+    width: 22%;
+    margin: 1%;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.steps .step:hover {
+    transform: translateY(-10px);
+}
+
+.steps .step h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.steps .step p {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+/* Testimonials Section */
+.testimonials {
+    background-color: #fff;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.testimonial {
+    display: inline-block;
+    width: 45%;
+    margin: 1%;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.testimonial cite {
+    font-style: normal;
+    font-weight: 500;
+    color: #007bff;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 1rem;
+}
+
+footer nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+footer nav ul li a {
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+footer nav ul li a:hover {
+    color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .steps .step {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .testimonial {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    nav ul {
+        display: none; /* Hide nav links on small screens */
+    }
+
+    .auth-buttons {
+        margin-left: auto;
+    }
+}
