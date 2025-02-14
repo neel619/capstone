@@ -6,7 +6,6 @@
   <title>HealthConnect - Integrated Healthcare & Fitness</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="min-h-screen bg-white">
   <!-- Navigation -->
@@ -27,19 +26,13 @@
           <a href="appointments.html" class="text-gray-600 hover:text-blue-600">Appointments</a>
         </div>
         <div class="flex items-center space-x-4">
-          <!-- Sign In Button -->
-          <button onclick="window.location.href='signup.html'" 
-            class="hidden md:block border-2 border-blue-600 text-blue-600 px-6 py-2 rounded-full hover:bg-blue-50 transition-colors">
+          <a href="signin.html" class="hidden md:block border-2 border-blue-600 text-blue-600 px-6 py-2 rounded-full hover:bg-blue-50 transition-colors">
             Sign In
-          </button>
-        
-          <!-- Get Started Button -->
-          <button onclick="window.location.href='signup.html'" 
-            class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors">
+          </a>
+          <a href="get-started.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors">
             Get Started
-          </button>
+          </a>
         </div>
-        
         <button id="mobile-menu-button" class="md:hidden">
           <i data-lucide="menu" class="h-6 w-6 text-gray-600"></i>
         </button>
@@ -53,9 +46,12 @@
         <a href="#features" class="block text-gray-600 hover:text-blue-600 py-2">Features</a>
         <a href="#trainers" class="block text-gray-600 hover:text-blue-600 py-2">Trainers</a>
         <a href="appointments.html" class="block text-gray-600 hover:text-blue-600 py-2">Appointments</a>
-        <button class="w-full text-center border-2 border-blue-600 text-blue-600 px-6 py-2 rounded-full hover:bg-blue-50 transition-colors">
+        <a href="signin.html" class="block text-center border-2 border-blue-600 text-blue-600 px-6 py-2 rounded-full hover:bg-blue-50 transition-colors">
           Sign In
-        </button>
+        </a>
+        <a href="get-started.html" class="block text-center bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors">
+          Get Started
+        </a>
       </div>
     </div>
   </nav>
@@ -506,6 +502,7 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script src="script.js"></script>
 </body>
 </html>
