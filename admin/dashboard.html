@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - GymC++</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-gray-100">
+  <!-- Sidebar -->
+  <div class="fixed inset-y-0 left-0 w-64 bg-blue-800 text-white">
+    <div class="p-6">
+      <div class="flex items-center space-x-2">
+        <i data-lucide="activity" class="h-8 w-8"></i>
+        <span class="text-xl font-bold">GymC++</span>
+      </div>
+    </div>
+    <nav class="mt-6">
+      <div class="px-4 space-y-2">
+        <a href="#" class="flex items-center space-x-2 py-2.5 px-4 rounded-lg bg-blue-700">
+          <i data-lucide="layout-dashboard" class="h-5 w-5"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="#users" class="flex items-center space-x-2 py-2.5 px-4 rounded-lg hover:bg-blue-700">
+          <i data-lucide="users" class="h-5 w-5"></i>
+          <span>Users</span>
+        </a>
+        <a href="#appointments" class="flex items-center space-x-2 py-2.5 px-4 rounded-lg hover:bg-blue-700">
+          <i data-lucide="calendar" class="h-5 w-5"></i>
+          <span>Appointments</span>
+        </a>
+        <a href="#trainers" class="flex items-center space-x-2 py-2.5 px-4 rounded-lg hover:bg-blue-700">
+          <i data-lucide="dumbbell" class="h-5 w-5"></i>
+          <span>Trainers</span>
+        </a>
+        <a href="#analytics" class="flex items-center space-x-2 py-2.5 px-4 rounded-lg hover:bg-blue-700">
+          <i data-lucide="bar-chart" class="h-5 w-5"></i>
+          <span>Analytics</span>
+        </a>
+        <a href="#settings" class="flex items-center space-x-2 py-2.5 px-4 rounded-lg hover:bg-blue-700">
+          <i data-lucide="settings" class="h-5 w-5"></i>
+          <span>Settings</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="ml-64 p-8">
+    <!-- Header -->
+    <header class="flex justify-between items-center mb-8">
+      <h1 class="text-2xl font-bold text-gray-900">Dashboard</h1>
+      <div class="flex items-center space-x-4">
+        <button id="notificationsBtn" class="p-2 text-gray-600 hover:text-blue-600">
+          <i data-lucide="bell" class="h-6 w-6"></i>
+        </button>
+        <div class="relative" id="userMenu">
+          <button class="flex items-center space-x-2">
+            <img
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              alt="Admin"
+              class="h-8 w-8 rounded-full"
+            >
+            <span class="text-gray-700">Admin User</span>
+            <i data-lucide="chevron-down" class="h-4 w-4 text-gray-600"></i>
+          </button>
+          <div id="userDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 hidden">
+            <a href="#profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
+            <a href="#settings" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Settings</a>
+            <hr class="my-1">
+            <button id="logoutBtn" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
+              Sign out
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <div class="bg-white rounded-lg shadow p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-gray-500 text-sm">Total Users</h3>
+          <i data-lucide="users" class="h-6 w-6 text-blue-600"></i>
+        </div>
+        <p class="text-2xl font-bold text-gray-900" id="totalUsers">Loading...</p>
+        <p class="text-green-600 text-sm mt-2">
+          <i data-lucide="trending-up" class="h-4 w-4 inline"></i>
+          <span>12% increase</span>
+        </p>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-gray-500 text-sm">Active Sessions</h3>
+          <i data-lucide="activity" class="h-6 w-6 text-blue-600"></i>
+        </div>
+        <p class="text-2xl font-bold text-gray-900" id="activeSessions">Loading...</p>
+        <p class="text-green-600 text-sm mt-2">
+          <i data-lucide="trending-up" class="h-4 w-4 inline"></i>
+          <span>8% increase</span>
+        </p>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-gray-500 text-sm">Total Revenue</h3>
+          <i data-lucide="dollar-sign" class="h-6 w-6 text-blue-600"></i>
+        </div>
+        <p class="text-2xl font-bold text-gray-900" id="totalRevenue">Loading...</p>
+        <p class="text-green-600 text-sm mt-2">
+          <i data-lucide="trending-up" class="h-4 w-4 inline"></i>
+          <span>15% increase</span>
+        </p>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-gray-500 text-sm">Active Trainers</h3>
+          <i data-lucide="dumbbell" class="h-6 w-6 text-blue-600"></i>
+        </div>
+        <p class="text-2xl font-bold text-gray-900" id="activeTrainers">Loading...</p>
+        <p class="text-green-600 text-sm mt-2">
+          <i data-lucide="trending-up" class="h-4 w-4 inline"></i>
+          <span>4% increase</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="bg-white rounded-lg shadow mb-8">
+      <div class="p-6">
+        <h2 class="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h2>
+        <div class="space-y-4" id="recentActivity">
+          <!-- Recent activity items will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Check if the user is authenticated
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      // Redirect to login if no token is found
+      window.location.href = '/login.html';
+    }
+
+    // Fetch dashboard data
+    async function fetchDashboardData() {
+      try {
+        const response = await fetch('/admin/dashboard', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Populate dashboard data
+          document.getElementById('totalUsers').textContent = '2,543';
+          document.getElementById('activeSessions').textContent = '145';
+          document.getElementById('totalRevenue').textContent = '$24,500';
+          document.getElementById('activeTrainers').textContent = '48';
+        } else {
+          // Redirect to login if unauthorized
+          window.location.href = '/login.html';
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+
+    fetchDashboardData();
+
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      // Remove the token from localStorage
+      localStorage.removeItem('token');
+
+      // Redirect to login
+      window.location.href = '/login.html';
+    });
+  </script>
+</body>
+</html>
