@@ -6,6 +6,7 @@
   <title>HealthConnect - Integrated Healthcare & Fitness</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="min-h-screen bg-white">
   <!-- Navigation -->
@@ -69,12 +70,12 @@
               Seamlessly connect with healthcare providers and fitness experts. Transform your health with personalized care and expert guidance.
             </p>
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors">
+              <a href="get-started.html" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors text-center">
                 Start Your Journey
-              </button>
-              <button class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+              </a>
+              <a href="viewplans.html" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors text-center">
                 View Plans
-              </button>
+              </a>
             </div>
           </div>
           <div class="relative">
@@ -82,7 +83,7 @@
               src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
               alt="Health and Fitness"
               class="rounded-lg shadow-xl"
-            >
+            />
           </div>
         </div>
       </div>
@@ -425,12 +426,12 @@
           Join thousands of members who are achieving their health and fitness goals with our integrated platform.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <button class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors">
+          <a href="get-started.html" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors text-center">
             Start Your Journey Now
-          </button>
-          <button class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors">
-            Schedule a Demo
-          </button>
+          </a>
+          <a href="viewplans.html" class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors text-center">
+            View Plans
+          </a>
         </div>
       </div>
     </section>
@@ -502,7 +503,12 @@
     </div>
   </footer>
 
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    // Initialize Lucide icons
+    window.addEventListener('load', function() {
+      lucide.createIcons();
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
