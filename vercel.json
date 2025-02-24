@@ -1,6 +1,15 @@
 {
-    "routes": [
-      { "src": "/(.*)", "dest": "/index.html" }
-    ]
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "fitness-backend/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server.js"
+    }
+  ]
+}

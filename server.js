@@ -1,19 +1,20 @@
 const express = require("express");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
-require("dotenv").config(); // Load environment variables
+require("dotenv").config(); // ✅ Load env variables
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
-app.use(express.json()); // ✅ body-parser remove kar diya
+app.use(express.json());
 
-// Default Route
+// ✅ Home Route (Test if Server is Running)
 app.get("/", (req, res) => {
-  res.send("Backend is running successfully!");
+  res.send("✅ Backend is running successfully!");
 });
 
+// ✅ Send Plan Route
 app.post("/send-plan", async (req, res) => {
   const { name, email } = req.body;
 
@@ -59,7 +60,5 @@ app.post("/send-plan", async (req, res) => {
   }
 });
 
-// Corrected PORT Configuration
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// ✅ Vercel ke liye Export karna zaroori hai
+module.exports = app;
